@@ -3,7 +3,6 @@ dist: trusty
 jobs:
   include:
     - stage: build docker image
-      install: travis_wait 60 mvn install
       script:
         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
         - "travis_wait 90 sleep infinity &"
