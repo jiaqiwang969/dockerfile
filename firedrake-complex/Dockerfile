@@ -23,7 +23,10 @@ RUN git clone https://github.com/jiaqiwang969/nthRootsOfUnity.git
 RUN echo "export PETSC_DIR=/home/firedrake/firedrake/src/petsc" >> ~/.bashrc
 RUN echo "export PETSC_ARCH=default" >> ~/.bashrc
 RUN echo "export PYTHONPATH=/home/nthRootsOfUnity/src:/home/petsc/bin" >> ~/.bashrc
-RUN source ~/.bashrc
+#RUN source ~/.bashrc
+RUN export PETSC_DIR=/home/firedrake/firedrake/src/petsc
+RUN export PETSC_ARCH=default
+RUN export export PYTHONPATH=/home/nthRootsOfUnity/src:/home/petsc/bin
 RUN cd /home/nthRootsOfUnity/examples
 RUN python3 0-ComputeBaseflow.py
 RUN python3 1-ExtractMatrices.py
