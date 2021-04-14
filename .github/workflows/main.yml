@@ -22,7 +22,7 @@ jobs:
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v1
         with:
-          images: jiaqiknight/firedrake-complex2
+          images: jiaqiknight/freefem-complex
           tag-sha: true
       -
         name: Set up QEMU
@@ -44,18 +44,18 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./firedrake-complex/Dockerfile
+          file: ./freefem-complex/Dockerfile
           platforms: linux/amd64
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
-          cache-to: jiaqiknight/firedrake-comlex2:cache
-          cache-from: jiaqiknight/firedrake-complex2:cache
+          cache-to: jiaqiknight/freefem-comlex:cache
+          cache-from: jiaqiknight/freefem-complex:cache
       -
         name: Sync DockerHub Readme
         uses: meeDamian/sync-readme@v1.0.6
         with:
           user: ${{ secrets.DOCKERHUB_USERNAME }}
           pass: ${{ secrets.DOCKERHUB_PASS }}
-          slug: jiaqiknight/firedrake-complex2
+          slug: jiaqiknight/freefem-complex
