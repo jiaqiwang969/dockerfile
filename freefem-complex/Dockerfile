@@ -1,6 +1,4 @@
 FROM ubuntu:bionic
-MAINTAINER Jiaqi 
-USER ff
 
 RUN cd /home
 
